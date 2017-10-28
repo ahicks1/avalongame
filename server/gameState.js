@@ -30,7 +30,7 @@ gameStates = {
   ENDED:6
 }
 
-function quest(players,doubleReq) = {
+function quest(players,doubleReq) {
   this.state = questStates.WAITING,
   this.numPlayers = players,
   this.double = doubleReq,
