@@ -30,7 +30,7 @@ gameStates = {
   ENDED:6
 }
 
-function quest(players,doubleReq) = {
+function quest(players,doubleReq) {
   this.state = questStates.WAITING,
   this.numPlayers = players,
   this.double = doubleReq,
@@ -38,6 +38,14 @@ function quest(players,doubleReq) = {
   this.members = [], //NOTE: includes player if they choose themselves
   this.voteCount = 0
 
+}
+
+function setupQuests(num) {
+  var ret = [];
+  if (num == 5) {
+    ret = [new quest(2, false), new quest(3, false), new quest(2,false), new quest(3,false), new quest(3,false)];
+  }
+  return ret;
 }
 
 function player(id) {
@@ -53,6 +61,6 @@ function game(numPlayers,roles) {
   this.currentPlayers = [],
   this.roles = roles,
   this.leader = undefined,
-  this.quests = []
+  this.quests = setupQuests(numPlayers)
 
 };
