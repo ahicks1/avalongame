@@ -2,14 +2,41 @@ const WebSocket = require('ws');
 const gs = require('./gameState')
 
 
-// Inbound User Message Types:
+InboundUserT = {
+  JOIN:1,
+  REQ_STATE:2,
+  ACT_VOTE:3,
+  ACT_QUEST:4,
+  CHOOSE_PLAYERS:5,
+}
+/* Inbound User Message Types:
 //Start
 //Join
+  {
+    type:InboundUserT.JOIN,
+    name:string"
+  }
 //ActVote
+  {
+    type:InboundUserT.ACT_VOTE,
+    approve:boolean
+  }
 //ReqState
+  {
+    type:InboundUserT.REQ_STATE,
+  }
 //ActQuest
+  {
+    type:ACT_QUEST,
+    succeed:boolean
+  }
 //ChoosePlayers NOTE: flag if done
-
+  {
+    type:CHOOSE_PLAYERS,
+    players:[playerIDs]
+    isFinal:boolean
+  }
+*/
 
 // Outbound User Message Types:
 //JoinAck
