@@ -22,6 +22,7 @@ playerStates = {
 };
 
 gameStates = {
+  NO_CONTROLLER:7,
   JOINING:1,
   REVEALING:2,
   CHOOSING:3,
@@ -33,12 +34,12 @@ gameStates = {
 
 
 function quest(players,doubleReq) {
-  this.state = questStates.WAITING,
-  this.numPlayers = players,
-  this.double = doubleReq,
-  this.leader = undefined,
-  this.members = [], //NOTE: includes player if they choose themselves
-  this.voteCount = 0
+  this.state = questStates.WAITING;
+  this.numPlayers = players;
+  this.double = doubleReq;
+  this.leader = undefined;
+  this.members = []; //NOTE: includes player if they choose themselves
+  this.voteCount = 0;
 
 }
 
@@ -50,19 +51,26 @@ function setupQuests(num) {
   return ret;
 }
 
+exports.newPlayer = (id) =>{
+  return new player(id);
+}
 function player(id) {
-  this.id = id,
-  this.role = roles.UNSET,
-  this.state = playerStates.IDLE
+  this.id = id;
+  this.role = roles.UNSET;
+  this.state = playerStates.IDLE;
 };
 
+exports.newGame = (numPlayers,roles) => {
+  return new game(numPlayers,roles);
+}
 function game(numPlayers,roles) {
-  this.maxPlayers = numPlayers,
-  this.numPlayers = 0,
-  this.currentCenter = undefined,
-  this.currentPlayers = [],
-  this.roles = roles,
-  this.leader = undefined,
-  this.quests = setupQuests(numPlayers)
+  this.state = gameStates.NO_CONTROLLER;
+  this.maxPlayers = numPlayers;
+  this.numPlayers = 0;
+  this.currentController = undefined;
+  this.currentPlayers = [];
+  this.roles = roles;
+  this.leader = undefined;
+  this.quests = setupQuests(numPlayers);
 
 };

@@ -1,5 +1,5 @@
 //vars hold whether or not that thing became true
-var joinYes; 
+var joinYes;
 document.getElementById("join_button").addEventListener("click", joinVal);
 function joinVal(){
   alert("Joining");
@@ -37,5 +37,20 @@ function failVal(){
 var websocket = new WebSocket("ws://localhost:8080"); //NOTE: change this later to be any IP
 websocket.onopen = yesConnect;
 function yesConnect(){
-	alert("Connected");
+	websocket.send(getStartPacket());
+}
+
+InboundUserT = {
+  JOIN:1,
+  REQ_STATE:2,
+  ACT_VOTE:3,
+  ACT_QUEST:4,
+  CHOOSE_PLAYERS:5,
+}
+function getStartPacket(){
+  var ret = {
+    type:InboundUserT.JOIN,
+    name:"UnderLord"
+  }
+  return JSON.stringify(ret);
 }
