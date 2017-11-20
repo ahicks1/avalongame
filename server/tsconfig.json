@@ -1,0 +1,11 @@
+{
+   "include": [
+     "../AvalonCore/**/*",
+     "**/*"
+   ],
+   "compileOnSave": true,
+   "compilerOptions": {
+       "outDir":"./out",
+       "noImplicitAny" : true
+   }
+}

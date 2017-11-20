@@ -1,5 +1,5 @@
 const WebSocket = require('ws');
-const gs = require('./gameState')
+const gs = require('../AvalonCore/gameState')
 
 
 InboundUserT = {
