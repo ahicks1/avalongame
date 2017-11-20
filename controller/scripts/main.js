@@ -170,8 +170,18 @@ System.register("AvalonCore/socketCore", [], function (exports_1, context_1) {
         }
     };
 });
-var websocket = new WebSocket("ws://localhost:8080"); //NOTE: change this later to be any IP
-websocket.onopen = yesConnect;
-function yesConnect() {
-    websocket.send("hello");
-}
+System.register("controller/controllerMain", [], function (exports_2, context_2) {
+    "use strict";
+    var __moduleName = context_2 && context_2.id;
+    function yesConnect() {
+        websocket.send("hello");
+    }
+    var websocket;
+    return {
+        setters: [],
+        execute: function () {
+            websocket = new WebSocket("ws://localhost:8080"); //NOTE: change this later to be any IP
+            websocket.onopen = yesConnect;
+        }
+    };
+});

@@ -7,7 +7,7 @@ function yesConnect(): void{
 }
 
 
-function getStartPacket(name:string){
+function getStartPacket(name:string): string{
   var ret = {
     type:msgT.P_JOIN,
     name:name
