@@ -5,7 +5,10 @@
    ],
    "compileOnSave": true,
    "compilerOptions": {
-       "outDir":"./out",
-       "noImplicitAny" : true
+     "module":"CommonJS",
+     "outDir":"./out",
+      "noImplicitAny" : true,
+      "lib": ["es5", "es6", "dom"]
    }
+
 }

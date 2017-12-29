@@ -1,5 +1,4 @@
-namespace gs {
-  export enum role {
+export enum playerRole {
     UNSET,
     MINION,
     LOYAL
@@ -23,7 +22,6 @@ namespace gs {
   };
 
   export enum gameState {
-    NO_CONTROLLER,
     JOINING,
     CHOOSING,
     VOTING,
@@ -66,12 +64,12 @@ namespace gs {
 
   export class Player {
     id:string;
-    role:role;
+    role:playerRole;
     state:playerState;
 
     constructor(id:string) {
       this.id = id;
-      this.role = role.UNSET;
+      this.role = playerRole.UNSET;
       this.state = playerState.IDLE;
     }
   }
@@ -79,7 +77,7 @@ namespace gs {
   export class Game {
     //Set in constructor
     maxPlayers:number;
-    roles:role[];
+    roles:playerRole[];
     quests:Quest[];
 
     //Track state
@@ -92,8 +90,8 @@ namespace gs {
     currentPlayers:Player[];
 
 
-    constructor(players:number,roles:role[]) {
-      this.state = gameState.NO_CONTROLLER;
+    constructor(players:number,roles:playerRole[]) {
+      this.state = gameState.JOINING;
       this.maxPlayers = players;
       this.numPlayers = 0;
       this.currentController = null;
@@ -103,5 +101,3 @@ namespace gs {
       this.quests = [];
     }
   }
-
-}
