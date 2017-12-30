@@ -22,6 +22,11 @@ var msgT;
     msgT[msgT["STOP_GAME"] = 13] = "STOP_GAME";
     msgT[msgT["RESET_GAME"] = 14] = "RESET_GAME";
 })(msgT = exports.msgT || (exports.msgT = {}));
+var connectionType;
+(function (connectionType) {
+    connectionType[connectionType["CONTROLLER"] = 0] = "CONTROLLER";
+    connectionType[connectionType["CLIENT"] = 1] = "CLIENT";
+})(connectionType = exports.connectionType || (exports.connectionType = {}));
 var serverMessage = (function () {
     function serverMessage(ts, data) {
         this.targets = ts;

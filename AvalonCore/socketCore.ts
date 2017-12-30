@@ -1,4 +1,4 @@
-export enum msgT{
+export enum msgT {
   //To User:
   JOIN_AWK,
   P_STATE,
@@ -23,6 +23,13 @@ export enum msgT{
   RESET_GAME,
 
 }
+
+export enum connectionType {
+  CONTROLLER,
+  CLIENT,
+
+}
+
 export class serverMessage {
   targets:string[];
   payload:string;

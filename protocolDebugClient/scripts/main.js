@@ -136,11 +136,11 @@ System.register("AvalonCore/socketCore", [], function (exports_2, context_2) {
         }
     };
 });
-System.register("client/clientMain", ["AvalonCore/socketCore"], function (exports_3, context_3) {
+System.register("protocolDebugClient/clientTestMain", ["AvalonCore/socketCore"], function (exports_3, context_3) {
     "use strict";
     var __moduleName = context_3 && context_3.id;
     function yesConnect() {
-        websocket.send(getStartPacket("UnderLord"));
+        websocket.send(getStartPacket("Banana"));
     }
     function getStartPacket(name) {
         var clientInfo = {

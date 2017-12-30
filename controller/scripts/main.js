@@ -90,7 +90,7 @@ System.register("AvalonCore/gameState", [], function (exports_1, context_1) {
 System.register("AvalonCore/socketCore", [], function (exports_2, context_2) {
     "use strict";
     var __moduleName = context_2 && context_2.id;
-    var msgT, serverMessage;
+    var msgT, connectionType, serverMessage;
     return {
         setters: [],
         execute: function () {
@@ -116,6 +116,11 @@ System.register("AvalonCore/socketCore", [], function (exports_2, context_2) {
                 msgT[msgT["RESET_GAME"] = 14] = "RESET_GAME";
             })(msgT || (msgT = {}));
             exports_2("msgT", msgT);
+            (function (connectionType) {
+                connectionType[connectionType["CONTROLLER"] = 0] = "CONTROLLER";
+                connectionType[connectionType["CLIENT"] = 1] = "CLIENT";
+            })(connectionType || (connectionType = {}));
+            exports_2("connectionType", connectionType);
             serverMessage = (function () {
                 function serverMessage(ts, data) {
                     this.targets = ts;
@@ -131,18 +136,31 @@ System.register("AvalonCore/socketCore", [], function (exports_2, context_2) {
         }
     };
 });
-System.register("controller/controllerMain", [], function (exports_3, context_3) {
+System.register("controller/controllerMain", ["AvalonCore/socketCore"], function (exports_3, context_3) {
     "use strict";
     var __moduleName = context_3 && context_3.id;
-    function yesConnect() {
-        websocket.send("hello");
+    function handleConnection() {
+        websocket.send(getStartPacket("Hello"));
     }
-    var websocket;
+    function getStartPacket(name) {
+        var controllerInfo = {
+            type: SC.connectionType.CONTROLLER,
+            room: "test",
+            name: name
+        };
+        var ret = new SC.serverMessage([], controllerInfo);
+        return JSON.stringify(ret);
+    }
+    var SC, websocket;
     return {
-        setters: [],
+        setters: [
+            function (SC_1) {
+                SC = SC_1;
+            }
+        ],
         execute: function () {
             websocket = new WebSocket("ws://localhost:8080"); //NOTE: change this later to be any IP
-            websocket.onopen = yesConnect;
+            websocket.onopen = handleConnection;
         }
     };
 });
