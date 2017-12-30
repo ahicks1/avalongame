@@ -1,13 +1,13 @@
-#Avalon Game States
+# Avalon Game States
 
-##Player Roles:
+## Player Roles:
 This list will be greatly expanded later to include special roles.
  * Unset
 
  * Minion
  * Loyal
 
-##Quest Status:
+## Quest Status:
  TODO: should we refactor these?
  * Idle
 
@@ -17,7 +17,7 @@ This list will be greatly expanded later to include special roles.
  * Succeeded
  * Failed
 
-##Player States:
+## Player States:
  * Idle
 
  * Choosing quest members
@@ -25,7 +25,7 @@ This list will be greatly expanded later to include special roles.
  * Acting in quest
  * Spectating?
 
-##Game States:
+## Game States:
  * Players joining
 
  * Choosing quest members
