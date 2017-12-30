@@ -11,6 +11,6 @@ If you want a message sent to all other clients or all other open connections us
 * allClients
 * controller
 
-#Avalon subprotocol design
+# Avalon subprotocol design
 
 Core definition is in AvalonProtocol.ts
