@@ -10,3 +10,7 @@ If you want a message sent to all other clients or all other open connections us
 * all
 * allClients
 * controller
+
+#Avalon subprotocol design
+
+Core definition is in AvalonProtocol.ts
